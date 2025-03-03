@@ -35,9 +35,7 @@ func main() {
 
 
 func setupLogger(env string) *zap.SugaredLogger  {
-
 	var log *zap.Logger
-
 	switch(env){
 	case local:
 		log = zap.Must(zap.NewDevelopment())
