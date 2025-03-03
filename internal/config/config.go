@@ -14,7 +14,7 @@ type Config struct {
 }
 
 
-func Deal() (*Config, error) {
+func Read() (*Config, error) {
 	configPath := flag.String("configPath", "config/local.yaml", "paths configs")
 
 	if *configPath == "" {

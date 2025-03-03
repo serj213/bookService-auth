@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/serj213/bookAuth/internal/config"
+	"github.com/serj213/bookAuth/pkg/pg"
 	"go.uber.org/zap"
 )
 
@@ -14,15 +15,22 @@ const (
 
 
 func run() error {
-	cfg, err := config.Deal()
+	cfg, err := config.Read()
 	if err != nil {
 		return err
 	}
 
 	log := setupLogger(cfg.Env)
-
 	log = log.With(zap.String("env", cfg.Env))
 	log.Info("logger enabled")
+
+	pg, err := pg.Deal(cfg.Dsn)
+	if err != nil {
+		return err
+	}
+
+	_ = pg
+
 
 	return nil
 }
