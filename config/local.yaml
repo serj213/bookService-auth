@@ -1,0 +1,2 @@
+env: "local"
+dsn: "postgres://postgres:root@localhost:5435/book_users?sslmode=disable"
